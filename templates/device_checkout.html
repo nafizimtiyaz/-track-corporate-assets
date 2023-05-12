@@ -1,0 +1,15 @@
+<h1>Device Checkout</h1>
+<form method="POST">
+  {% csrf_token %}
+  <label for="condition">Checkout Condition:</label>
+  <input type="text" id="condition" name="condition">
+
+  <label for="employee">Select Employee:</label>
+  <select id="employee" name="employee">
+    {% for employee in employees %}
+      <option value="{{ employee.name }}">{{ employee.name }}</option>
+    {% endfor %}
+  </select>
+
+  <button type="submit">Checkout</button>
+</form>

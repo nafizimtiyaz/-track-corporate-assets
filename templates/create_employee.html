@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="{% url 'adde' %}">
+        {% csrf_token %}
+        
+        <!-- Employee details -->
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="department" placeholder="Department" required>
+        
+        <input type="hidden" name="company" value="{{ request.user.company.id }}">
+        
+        <button type="submit">Add Employee</button>
+      </form>
+      
+</body>
+</html>

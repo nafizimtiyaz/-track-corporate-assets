@@ -1,0 +1,24 @@
+<h1>Device Detail</h1>
+<p>Name: {{ device.name }}</p>
+<p>Model: {{ device.model_name }}</p>
+<!-- Display other device details -->
+
+<h2>Device Allocation History</h2>
+{% if DeviceAllocation %}
+  <ul>
+    {% for allocation in DeviceAllocation %}
+      <li>
+        <p>Checkout Date: {{ allocation.checkout_date }}</p>
+        <p>Return Date: {{ allocation.return_date }}</p>
+        <p>Checkout Condition: {{ allocation.checkout_condition }}</p>
+        <p>Return Condition: {{ allocation.return_condition }}</p>
+        <!-- Display other allocation details -->
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No allocation history found for this device.</p>
+{% endif %}
+
+<a href="{% url 'device_checkout' device_id=device.id %}">Checkout Device</a>
+<a href="{% url 'device_return' device_id=device.id %}">Return Device</a>
